@@ -24,8 +24,8 @@ brew upgrade --all
 
 # Install the Homebrew packages I use on a day-to-day basis.
 #
-# - Languages: rvm (Ruby), nvm (Node.js), go
-# - Databases: Progres, MySQL, Redis, Mongo, Elasticsearch
+# - Languages: nvm (Node.js), go
+# - Databases: Progres, MySQL, Redis, Elasticsearch
 # - Servers: Apache, Nginx
 # - Fuck (https://github.com/nvbn/thefuck): Correct your previous command. Note
 #   that this needs to be added to zsh or bash. See the project README.
@@ -44,16 +44,13 @@ brew upgrade --all
 # which version I'm using.
 
 apps=(
-    rvm
     nvm
-    mongodb
     bash-completion2
     coreutils
     moreutils
     findutils
     ffmpeg
     fortune
-    ponysay
     git
     git-extras
     hub
