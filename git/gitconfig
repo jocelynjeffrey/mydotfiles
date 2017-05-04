@@ -34,8 +34,8 @@
     helper = osxkeychain
 
 [user]
-    name = Jocelyn Jeffrey
-    email = jocelynjeffrey@gmail.com
+	name = Jocelyn Jeffrey
+	email = jocelynjeffrey@gmail.com
 
 [fetch]
         prune = true
