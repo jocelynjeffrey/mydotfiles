@@ -44,14 +44,8 @@ packages=(
     git-open
     gulp
     http-server
-    servedir
-    flow-bin
-    flow-typed
     npm-check-updates
     webpack
-    nodemon
-    svgo
-    yo
 )
 
 npm install -g "${packages[@]}"
