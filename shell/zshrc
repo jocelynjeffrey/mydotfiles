@@ -47,7 +47,7 @@ ZSH_THEME="cobalt2"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -84,5 +84,3 @@ source $ZSH/oh-my-zsh.sh
 # npm tab completion
 . <(npm completion)
 
-# fortune: brew install fortune ponysay
-fortune
