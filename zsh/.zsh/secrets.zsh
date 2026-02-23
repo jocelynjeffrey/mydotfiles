@@ -1,14 +1,20 @@
-# Secrets loaded from 1Password at shell startup
+# Secrets lazy-loaded from 1Password on first use
 # Requires: op CLI authenticated (biometric via 1Password desktop app)
 # Uses personal account (my.1password.com) Private vault
 #
 # To add a new secret:
 #   1. Store it in 1Password (Private vault, personal account)
-#   2. Add an op read line below
+#   2. Add a function below following the same pattern
 #   3. Use: op read "op://Private/Item Name/field"
 
-# Only load if op is available and authenticated
-if command -v op &>/dev/null; then
-  export SENTRY_USER_AUTH_TOKEN=$(op read "op://Private/Sentry User Auth Token/credential" --account my.1password.com 2>/dev/null)
-  export ROLLBAR_KEY=$(op read "op://Private/Rollbar Key/credential" --account my.1password.com 2>/dev/null)
-fi
+# Lazy-load helper: fetches from 1Password on first access, caches in env for session
+_op_lazy() {
+  local var_name=$1 op_ref=$2
+  if [[ -z "${(P)var_name}" ]] && command -v op &>/dev/null; then
+    export "$var_name"="$(op read "$op_ref" --account my.1password.com 2>/dev/null)"
+  fi
+  echo "${(P)var_name}"
+}
+
+SENTRY_USER_AUTH_TOKEN() { _op_lazy SENTRY_USER_AUTH_TOKEN "op://Private/Sentry User Auth Token/credential"; }
+ROLLBAR_KEY() { _op_lazy ROLLBAR_KEY "op://Private/Rollbar Key/credential"; }
