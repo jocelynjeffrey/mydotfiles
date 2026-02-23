@@ -1,6 +1,6 @@
 # Create directory and cd into it
 md() {
-  mkdir -p "$@" && cd "$@"
+  mkdir -p "$@" && cd "${@:$#}"
 }
 
 # Find shorthand

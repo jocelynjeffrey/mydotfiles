@@ -7,6 +7,9 @@ export LANG="en_US.UTF-8"
 
 # Homebrew
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+# Local scripts
+export PATH="$HOME/.local/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # mise (version manager)
