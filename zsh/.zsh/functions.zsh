@@ -1,4 +1,5 @@
 # Create directory and cd into it
+unalias md 2>/dev/null
 md() {
   mkdir -p "$@" && cd "${@:$#}"
 }

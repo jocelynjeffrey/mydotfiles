@@ -1,5 +1,0 @@
-[settings]
-idiomatic_version_file_enable_tools = ["node", "python", "ruby", "java"]
-
-[tools]
-node = "18.20.2"
