@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Delete local and remote branches that have been merged to main
+
+default_branch="${1:-main}"
+
+branches_to_die=$(git branch --no-color --merged "origin/$default_branch" | grep -v "\s$default_branch$")
+echo "Local branches to be deleted:"
+echo "$branches_to_die"
+
+remote_branches_to_die=$(git branch --no-color --remote --merged "origin/$default_branch" \
+  | grep -v "\s$default_branch$" \
+  | grep -v "/$default_branch$" \
+  | grep -v "origin/HEAD" \
+  | grep -v "origin/$default_branch")
+echo ""
+echo "Remote branches to be deleted:"
+echo "$remote_branches_to_die"
+
+echo ""
+echo "Enter Y to confirm"
+read -p "> " confirm
+
+if [[ "$confirm" == "Y" ]]; then
+  echo "$branches_to_die" | xargs -n 1 git branch -d
+  for remote in $remote_branches_to_die; do
+    git branch -rd "$remote"
+  done
+fi
+
+echo ""
+echo "Pruning all remotes"
+git remote | xargs -n 1 git remote prune
