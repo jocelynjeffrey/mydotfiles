@@ -1,0 +1,55 @@
+# Starship prompt config
+# No Nerd Font icons — plain text symbols only
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$ruby\
+$cmd_duration\
+$line_break\
+$character"""
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+
+[directory]
+truncation_length = 3
+truncation_symbol = ".../"
+
+[git_branch]
+symbol = ""
+format = "on [$branch]($style) "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+conflicted = "="
+ahead = "^"
+behind = "v"
+diverged = "^v"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "r"
+deleted = "x"
+
+[nodejs]
+symbol = ""
+format = "node [$version]($style) "
+detect_files = ["package.json", ".node-version"]
+
+[python]
+symbol = ""
+format = "py [$version]($style) "
+
+[ruby]
+symbol = ""
+format = "rb [$version]($style) "
+
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
