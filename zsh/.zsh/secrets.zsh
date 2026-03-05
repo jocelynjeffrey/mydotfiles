@@ -18,3 +18,11 @@ _op_lazy() {
 
 SENTRY_USER_AUTH_TOKEN() { _op_lazy SENTRY_USER_AUTH_TOKEN "op://Private/Sentry User Auth Token/credential"; }
 ROLLBAR_KEY() { _op_lazy ROLLBAR_KEY "op://Private/Rollbar Key/credential"; }
+
+# Jira CLI (jira-cli) - lazy-load via wrapper since CLI reads env directly
+jira() {
+  if [[ -z "$JIRA_API_TOKEN" ]] && command -v op &>/dev/null; then
+    export JIRA_API_TOKEN="$(op read 'op://Private/Jira CLI Personal Token/password' --account my.1password.com 2>/dev/null)"
+  fi
+  command jira "$@"
+}
