@@ -47,3 +47,15 @@
 
 [merge]
 	conflictstyle = diff3
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+
+[user]
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICvZWX34jemHvhVEhbAgJfL4CLs15WLRuf6zsh6iiYnI
